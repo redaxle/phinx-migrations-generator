@@ -211,6 +211,8 @@ final class MySqlSchemaAdapter implements SchemaAdapterInterface
             $sql .= ' AND t.table_name in (' . implode(',', $quotedNames) . ')';
         }
 
+        $sql .= " ORDER BY t.table_name";
+
         $rows = $this->queryFetchAll($sql);
 
         foreach ($rows as $row) {
